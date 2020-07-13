@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <ul id="list" class="list-group">
+        <li class="list-group-item" >Example</li>
+        </ul>
+    </div>
+    <script>
+        'use strict'
+let arr = ["Tom", "Steve", "Bill", "Rita", "Pete", "Ashley"];
+const list = document.getElementById('list'); 
+list.children[0].remove();
+let fn = function(arr, list) {
+    function compareNumeric(a, b) {
+  if (a > b) return 1;
+  if (a == b) return 0;
+  if (a < b) return -1;
+}
+arr.sort(compareNumeric);
+const examplMap = arr.map(function(x, y) {
+    let newLi = document.createElement("li");
+        list.appendChild(newLi).textContent = arr[y];
+        newLi.classList.add("list-group-item");
+})
+}
+
+function map(arr, fn) {
+    fn(arr, list)
+}
+
+map(arr, fn);
+    </script>
+    
+</body>
+</html>
