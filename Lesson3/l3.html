@@ -1,6 +1,15 @@
-Код работает, но не защищен - клментский код может удалить элементы массива  из-вне
-Исправить этот недостаток 
-*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//     Код работает, но не защищен - клментский код может удалить элементы массива  из-вне
+// Исправить этот недостаток 
+
 
 function getUsers() {
   const users = ["Bill"];
@@ -22,3 +31,6 @@ console.log(u.getUsers()); // выведется [ 'Bill', 'Jim', 'Paul' ]
 
 u.getUsers().pop(); // удаляем 2-й элемент массива
 console.log(u.getUsers()); //  ['Bill', 'Jim']
+  </script>
+</body>
+</html>

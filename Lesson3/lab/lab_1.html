@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Lab 1</title>
+    <style>
+        .regpre {
+            line-height: 2;
+            margin: 1rem 0;
+            font-size: 2rem;
+        }
+        .regpre span {
+            background: #eee;
+            padding: 1px;
+            outline: 1px solid #999;
+            margin-right: 4px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <pre class="regpre" id="regpre"></pre>
+</div>
+
+<script>
+    const el = document.getElementById("regpre");
+
+    const out = (string, regExp) => el.innerHTML = string.replace(regExp, string => `<span>${string}</span>`);
+
+    const string = `Big cat, small cat and black CAT are sat on the hat. aaaaaaaaa.
+Product $100 55%. foobar foobar fooboo. This island is his, it is.
+01/09
+10-11
+10/10
+01-09
+01:09
+"Milton", "Waddams", "Initech, Inc."`;
+    const regExp = //Your code here;
+
+    out(string, regExp);
+
+</script>
+</body>
+</html>

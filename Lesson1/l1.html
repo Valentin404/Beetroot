@@ -19,9 +19,11 @@ const list = document.getElementById('list');
 list.children[0].remove();
 let fn = function(arr, list) {
     function compareNumeric(a, b) {
-  if (a > b) return 1;
-  if (a == b) return 0;
-  if (a < b) return -1;
+//   if (a > b) return 1;
+//   if (a == b) return 0;
+//   if (a < b) return -1;
+// return a.localeCompare(b)
+return a.toLowerCase().localeCompare(b.toLowerCase())
 }
 arr.sort(compareNumeric);
 const examplMap = arr.map(function(x, y) {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Lab 5</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .regpre {
+        line-height: 2;
+        margin: 1rem 0;
+        font-size: 2rem;
+      }
+      .regpre span {
+        background: #eee;
+        padding: 1px;
+        outline: 1px solid #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <pre id="regpre" class="regpre"></pre>
+    </div>
+
+    <script>
+      const out = (string, regExp) =>
+        (document.getElementById("regpre").innerHTML = string.replace(
+          regExp,
+          string => `<span>${string}</span>`
+        ));
+
+      let string = `<b>bold</b><i>italic</i>`;
+      let regExp = //Your code here;
+      out(string, regExp);
+
+      /*  ===========================================================
+Регулярным выраженим в строке string убрать теги
+Результат вывести в консоль
+
+bold
+italic
+=================================================================  */
+
+    </script>
+  </body>
+</html>

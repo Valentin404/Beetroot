@@ -11,18 +11,21 @@
 <body>
 
 <div class="container">
-    <h1 id="out" class="out">Javascript is exelent languare.<br>We like to learn javascript.</h1>
-    <input id="btn" class="btn btn-primary" type="button" value="Click me">
+    <h1 id="out" class="out" >Javascript is exelent languare.<br>We like to learn javascript.</h1>
+    <input id="btn" class="btn btn-primary" type="button" value="Click me" onclick="fun()">
 </div>
 <!-- 
     Заменить словосочетание javascript в параграфе  на JAVASCRIPT.
 -->
 <script>
-
-
+const btn = document.querySelector("btn");
+let out = document.getElementById("out");
+function fun() {
+let regexp = /javascript\b/g
+// console.log(out.textContent.replace(regexp, "JAVASCRIPT"))
+out.textContent = out.textContent.replace(regexp, "JAVASCRIPT")
+}
 
 </script>
-
-
 </body>
 </html>
