@@ -17,7 +17,7 @@
       const arr = [11, 66, 33, 44, 22, 55, 2];
 
       function filter(arr, fn) {
-        fn(arr)
+      return  fn(arr)
         // console.log(fn(arr))
       }
       function fn(arr) {
@@ -29,7 +29,7 @@
 
       // Проверка - вернуть массив с элементами значение которых больше 50
       const filteredArr = filter(arr, function (item) {
-          let newArr = [];
+           let newArr = []
      for(let i = 0; i < item.length; i++) {
          if(item[i] > 50) {
         newArr.push(item[i])
@@ -38,8 +38,9 @@
          }
      }
     //  item = newArr
-     console.log(newArr)
+ 
      
+     return newArr;
       });
 
       console.log(filteredArr); //   [66, 55]]
