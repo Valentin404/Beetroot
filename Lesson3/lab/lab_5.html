@@ -37,7 +37,8 @@
         ));
 
       let string = `<b>bold</b><i>italic</i>`;
-      let regExp = //Your code here;
+      let regExp = /<(\w)>(.+)<\/\1>/
+
       out(string, regExp);
 
       /*  ===========================================================
