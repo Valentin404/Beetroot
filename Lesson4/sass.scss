@@ -1,0 +1,81 @@
+// Переменные $ + Любое имя + : + Значение + ; ($fz:30px;)
+$fz:30px;
+$color: red;
+// импорт другиг файлов
+@import "null.scss";
+
+// Шаблон Создаем блок параметров  1
+%linkStyle{
+    font-size: 30px;
+    color: blue;
+}
+// Шаблон Создаем блок параметров  2 ( Создаем несущестыующий Class)
+.stP {
+    color: green;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+// Миксин 
+@mixin fontz($f) {  // @mixin + name + (arg) + {   // arg - переменая
+    font-size:$f ;  //some stile + arg + ;
+}
+
+@mixin name($a, $b, $c) {
+    font-size: $a;
+    margin-right: $b;
+    background-color: $c;
+}
+
+
+
+
+body {
+    // Мат получил значение в %
+    width: 500px / 960px * 100%;
+
+    color: $color;
+    background-color: black;
+    span {
+        color: green;
+        background-color: blue;
+        }
+           .contaier {
+              font-size: $fz;
+              p{
+                 @extend .stP;
+              }
+        }
+    .block {
+        // Свойство для всех p первого уровня вложености
+        >p{
+            font-size: $fz;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        >.link {
+            // Импорт Шаблона @extend + % + Имя переменной
+           @extend %linkStyle;
+        //    Что бы изменить какойто стиль из Шаблона после импорта написать то, что хочешь поменять
+        font-size: 35px;
+
+
+            // & Родитель (.link)
+            &:hover {opacity: .5;
+            text-decoration: none;
+        transition: all .9s;}
+        
+        }
+        &.block__big {
+            // Подключения миксина  @include + fontz(30px)
+            @include fontz(30px);
+
+
+            background-color: wheat;
+                }
+    }
+    
+ 
+}
+
+    
+  
+
