@@ -33,7 +33,7 @@
       const out = (string, regExp) =>
         (document.getElementById("regpre").innerHTML = string.replace(
           regExp,
-          string => `<span>${string}</span>`
+          ""
         ));
 
       let string = `it was the the thing thing`;

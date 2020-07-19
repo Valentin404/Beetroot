@@ -33,13 +33,15 @@
       const out = (string, regExp) =>
         (document.getElementById("regpre").innerHTML = string.replace(
           regExp,
-          string => `<span>${string}</span>`
+          // string => `<span>${string}</span>` 
+          ""
         ));
 
-      let string = `<b>bold</b><i>italic</i>`;
-      let regExp = /<(\w)>(.+)<\/\1>/
+      let string = `<b>bold</b><i> italic</i>`;
+      let regExp = /<\/?([a-z]+)>/g
 
       out(string, regExp);
+      console.log(out(string, regExp));
 
       /*  ===========================================================
 Регулярным выраженим в строке string убрать теги
