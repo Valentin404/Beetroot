@@ -33,7 +33,7 @@
       const out = (string, regExp) =>
         (document.getElementById("regpre").innerHTML = string.replace(
           regExp,
-          string => `<span>${string}</span>`
+          string => `<span>${string.replace(regExp, "Code: $1")}</span>`
         ));
 
       let string;
@@ -50,6 +50,9 @@ Code: 099
       string = `063-500-4444
 (067) 333-5555
 0994565423`;
+
+console.log(string)
+
 
       out(string, regExp);
     </script>
