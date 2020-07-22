@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// const Person = {
+//     firstName: "Bill",
+//     greet: function() {
+//         console.log( "Hello" +this.firstName )
+//     }
+// }
+// function  createPerson(firstName, lastName) {
+//     return {
+//         firstName,
+//         lastName,
+//         getFullName: function() {
+//         console.log('Hello' + this.firstName + this.lastName)
+//         }
+//     }
+// }
+// let user1 = createPerson("Valik", "Rad");
+// console.log(user1.getFullName())
+let Person = function(firstName, lastName) {
+this.firstName = firstName;
+this.lastName = lastName;
+}
+Person.prototype.getFullName = function() {
+    console.log("Hello " + this.firstName +" " + this.lastName)
+}
+
+let per1 = new Person("Valik", "Rad")
+let per2 = new Person("V", "R")
+// console.log(per1.getFullName)
+console.log(per2)
+console.log(per1.getFullName === per2.getFullName)
+per1.getFullName()
+    </script>
+</body>
+</html>

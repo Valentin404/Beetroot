@@ -17,22 +17,29 @@
     <button id="btn">Click me</button>
 
     <script>
-      const obj = {
+     const obj = {
         clicked: false,
 
         click: function() {
-          // this.clicked = true;
-          // console.log(obj.clicked);
-          console.log(this.clicked)
+          this.clicked = true;
+          console.log(obj.clicked);
           // alert("Button is clicked");
         }
       };
+function bind(obj, method) {
+return function() {
+  return obj[method].apply(obj);
+};
+
+}
      const clicked = {
       clicked: true,
       
      }
-      const button = document.getElementById("btn");
-      button.addEventListener("click", obj.click.bind(clicked));
+     const button = document.getElementById("btn");
+      // button.addEventListener("click", obj.clickbind(clicked));
+      button.addEventListener("click", bind(obj, "click"));
+
    </script>
   </body>
 </html>

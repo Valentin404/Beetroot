@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class Media  {
+constructor(title, duration) {
+    this.title = title;
+    this.duration = duration;
+    this.isPlaying = false;
+}
+play() {
+    this.isPlaying = true;
+}
+stop() {
+    this.isPlaying = false;
+}
+}
+
+
+class Movie extends Media {
+        constructor(title, year, duration) {
+            super()
+            this.year = year;
+            // Media.call(this, title, duration)
+        }
+      toHtml() {
+            return `<div class="row py-3 ${this.isPlaying ? 'current': ''}">
+            <div class="col-sm-9">${this.title} - ${this.year}</div>
+               <div class="col-sm-3">${this.duration}</div> 
+               </div>`
+        }
+    }
+let a = new Movie()
+a.title = "rod"
+console.log(a.isPlaying)
+
+    </script>
+</body>
+</html>

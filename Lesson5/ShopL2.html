@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class ShopProduct {
+    constructor(title, price) {
+        this.title = title
+        this.price = price
+    }
+    getTitle() { return this.title};
+    getPrice() {return this.price};
+    setPrice(arg) {this.price = arg};
+    setTitle(arg) {this.title = arg};
+    getInfo() {return[this.title, this.price]};
+}
+
+class CDproduct extends ShopProduct {
+    constructor(playLength) {
+       super()
+       this.playLength = playLength;
+    }
+    getPlayLength() {return this.playLength};
+}
+
+class BookProduct extends ShopProduct {
+    constructor() {
+        super(numPages)
+        this.numPages = numPages;
+        
+    }
+    getNumPages()  {return this.numPages}
+}
+
+
+// ShopProduct(1,1)
+// let a = new CDproduct()
+// console.log(a.a)
+//         let ShopProduct = {
+//             title: "string",
+//             price: 0,
+// get getTitle() { return this.title},
+// get getPrice() {return this.price},
+// set setPrice(arg) {this.price = arg},
+// set setTitle(arg) {this.title = arg},
+// // set setTitle(arg) {this.title = arg.split()},
+// get getInfo() { return[this.title, this.price]}
+//         }
+
+//         let CDproduct = {
+//             playLength: 1,
+//             get getPlayLength() {return this.playLength},
+//             __proto__: ShopProduct
+//         }
+
+//         let BookProduct = {
+//             numPages: 2,
+//             get getNumPages() {return this.numPages},
+//             __proto__: ShopProduct  
+//         }
+//         // console.log(CDproduct.getInfo)
+//         // console.log(BookProduct)
+//         CDproduct.setPrice = 12
+//         CDproduct.setTitle = "foor"
+//         console.log(CDproduct.title)
+//         console.log(CDproduct.price)
+//         console.log(ShopProduct.price)
+//         // console.log(CDproduct)
+    </script>
+</body>
+</html>

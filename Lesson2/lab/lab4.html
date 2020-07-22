@@ -37,7 +37,10 @@
         // box.style.backgroundColor = red;
        return function(click) {
           return function(color) {
-           box.onclick = () => {box.style.backgroundColor = color;}
+            box.addEventListener(
+              click,
+              e => (e.target.style.backgroundColor = color)
+            );
           }
         }
       }
