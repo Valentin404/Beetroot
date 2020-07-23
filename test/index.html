@@ -35,10 +35,33 @@ class Movie extends Media {
                </div>`
         }
     }
-let a = new Movie()
-a.title = "rod"
-console.log(a.isPlaying)
-
+//     class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+// }
+// class User extends Person {
+//   constructor(age) {
+//     super();
+//     this.age = age;
+//   }
+//   getInfo() {
+//     return `${this.name} has ${this.age} years old`;
+//   }
+// }
+// const user = new User("Bill", 20);
+// console.log(user.getInfo())
+// undefined has Bill years old
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  get getName() {
+    return this.name;
+  }
+}
+const user = new Person("Bill");
+console.log(user.getName) 
     </script>
 </body>
 </html>

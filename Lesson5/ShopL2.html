@@ -7,35 +7,71 @@
 </head>
 <body>
     <script>
-class ShopProduct {
-    constructor(title, price) {
-        this.title = title
-        this.price = price
-    }
-    getTitle() { return this.title};
-    getPrice() {return this.price};
-    setPrice(arg) {this.price = arg};
-    setTitle(arg) {this.title = arg};
-    getInfo() {return[this.title, this.price]};
+// ES5//////////
+function ShopProduct(title, price) {
+    this.title = title
+    this.price = price
+}
+ShopProduct.prototype.getTitle = function() {return this.title}
+ShopProduct.prototype.getPrice = function() {return this.price}
+ShopProduct.prototype.setPrice = function(arg) {this.price = arg}
+ShopProduct.prototype.setTitle = function(arg) {this.title = arg}
+ShopProduct.prototype.getInfo = function() {return[this.title, this.price]}
+
+
+function CDproduct(playLength) {
+    this.playLength = playLength;
 }
 
-class CDproduct extends ShopProduct {
-    constructor(playLength) {
-       super()
-       this.playLength = playLength;
-    }
-    getPlayLength() {return this.playLength};
+CDproduct.prototype = Object.create(ShopProduct.prototype);
+CDproduct.prototype.constructor = CDproduct;
+
+CDproduct.prototype.getPlayLength = function() {return this.playLength}
+
+
+function BookProduct(numPages) {
+    this.numPages = numPages;
 }
 
-class BookProduct extends ShopProduct {
-    constructor() {
-        super(numPages)
-        this.numPages = numPages;
+BookProduct.prototype = Object.create(ShopProduct.prototype);
+BookProduct.prototype.constructor = BookProduct;
+
+BookProduct.prototype.getNumPages = function() {return this.numPages}
+
+
+
+// Class/////
+
+// class ShopProduct {
+//     constructor(title, price) {
+//         this.title = title
+//         this.price = price
+//     }
+//     getTitle() { return this.title};
+//     getPrice() {return this.price};
+//     setPrice(arg) {this.price = arg};
+//     setTitle(arg) {this.title = arg};
+//     getInfo() {return[this.title, this.price]};
+// }
+
+// class CDproduct extends ShopProduct {
+//     constructor(playLength) {
+//        super()
+//        this.playLength = playLength;
+//     }
+//     getPlayLength() {return this.playLength};
+// }
+
+// class BookProduct extends ShopProduct {
+//     constructor() {
+//         super(numPages)
+//         this.numPages = numPages;
         
-    }
-    getNumPages()  {return this.numPages}
-}
+//     }
+//     getNumPages()  {return this.numPages}
+// }
 
+// Object////////////
 
 // ShopProduct(1,1)
 // let a = new CDproduct()
