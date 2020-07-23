@@ -16,12 +16,21 @@ ShopProduct.prototype.getTitle = function() {return this.title}
 ShopProduct.prototype.getPrice = function() {return this.price}
 ShopProduct.prototype.setPrice = function(arg) {this.price = arg}
 ShopProduct.prototype.setTitle = function(arg) {this.title = arg}
-ShopProduct.prototype.getInfo = function() {return[this.title, this.price]}
+ShopProduct.prototype.getInfo = function() {return `${this.title}, ${this.price}`}
+
+function CDProduct(title, price, playLength){
+
+ShopProduct.apply(this, arguments);
+
+this.playLength = playLength;
 
 
-function CDproduct(playLength) {
-    this.playLength = playLength;
+
 }
+// function CDproduct(playLength) {
+    
+//     this.playLength = playLength;
+// }
 
 CDproduct.prototype = Object.create(ShopProduct.prototype);
 CDproduct.prototype.constructor = CDproduct;
@@ -51,7 +60,7 @@ BookProduct.prototype.getNumPages = function() {return this.numPages}
 //     getPrice() {return this.price};
 //     setPrice(arg) {this.price = arg};
 //     setTitle(arg) {this.title = arg};
-//     getInfo() {return[this.title, this.price]};
+//     getInfo() {return`${this.title}, ${this.price}`};
 // }
 
 // class CDproduct extends ShopProduct {
@@ -84,7 +93,7 @@ BookProduct.prototype.getNumPages = function() {return this.numPages}
 // set setPrice(arg) {this.price = arg},
 // set setTitle(arg) {this.title = arg},
 // // set setTitle(arg) {this.title = arg.split()},
-// get getInfo() { return[this.title, this.price]}
+// get getInfo() { return`${this.title}, ${this.price}`}
 //         }
 
 //         let CDproduct = {
