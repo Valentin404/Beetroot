@@ -1,3 +1,14 @@
-.current {
+@import "null.scss";
+$color: red;
+
+%Current{
+    font-size: 30px;
     background-color: #e2e2e2;
+}
+.current {
+    @extend %Current
+}
+body{
+    background-color: $color;
+   
 }
