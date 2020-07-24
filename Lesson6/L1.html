@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .div{
+            font-size: 50px;
+            text-align: center;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
-    <div id="spinner" class="spinner"><img src="swapi/i/spinner.gif" height="32"></div>
+    <div class="div">Promise</div>
     <div id="output"></div>
+    <div id="spinner" class="spinner"><img src="swapi/i/spinner.gif" height="32"></div>
+    <div class="div">Async and await</div>
+    <div id="output1"></div>
  
     <script>
-const URL = "https://jsonplaceholder.typicode.com/";
+const URL = 'https://jsonplaceholder.typicode.com/posts/';
 const output = document.getElementById("output");
+const output1 = document.getElementById("output1");
 const spinner = document.getElementById('spinner');
 
 
-fetch('https://jsonplaceholder.typicode.com/posts/1', {
+fetch(URL+'1', {
     method: 'PUT',
     body: JSON.stringify({
         response: [
@@ -85,7 +95,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/1', {
       "Content-type": "application/json; charset=UTF-8"
     }
   })
-  .then(response => response.json())
+  .then(response => response.ok ? response.json() : Promise.reject('What do you mean?'))
   .then(response => {
     //   console.log(response.response)
       output.innerHTML = ShowPost(response)
@@ -114,79 +124,103 @@ function ShowPost(results) {
  .join("")
 }
 
-////////////////
+//////////////// async and await
 
-// fetch('https://jsonplaceholder.typicode.com/posts/1', {
-//     method: 'PUT',
-//     body: JSON.stringify({
-//         response: [
-//       {
-//           'id':1,
-//           'name': "Film1",
-//           username: "Valik",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:2,
-//           name: "Film2",
-//           username: "Igor",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:3,
-//           name: "Film3",
-//           username: "Varom",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:4,
-//           name: "Film4",
-//           username: "God",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:5,
-//           name: "Film5",
-//           username: "Slavik",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:6,
-//           name: "Film6",
-//           username: "Rom",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:7,
-//           name: "Film7",
-//           username: "VVVVV",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:8,
-//           name: "Film8",
-//           username: "Moro",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:9,
-//           name: "Film9",
-//           username: "Vanor",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//       {
-//           id:10,
-//           name: "Film10",
-//           username: "Won",
-//           email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
-//       },
-//   ]
-//     }),
-//     headers: {
-//       "Content-type": "application/json; charset=UTF-8"
-//     }
-//   })
-//   .then(response => response.json())
+function api(num){
+return  fetch(URL+num, {
+    method: 'PUT',
+    body: JSON.stringify({
+        response: [
+      {
+          'id':1,
+          'name': "Film1",
+          username: "Valik",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:2,
+          name: "Film2",
+          username: "Igor",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:3,
+          name: "Film3",
+          username: "Varom",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:4,
+          name: "Film4",
+          username: "God",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:5,
+          name: "Film5",
+          username: "Slavik",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:6,
+          name: "Film6",
+          username: "Rom",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:7,
+          name: "Film7",
+          username: "VVVVV",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:8,
+          name: "Film8",
+          username: "Moro",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:9,
+          name: "Film9",
+          username: "Vanor",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+      {
+          id:10,
+          name: "Film10",
+          username: "Won",
+          email: "https://lms.beetroot.academy/myCourses/lesson/ckcg4th5dn0n50736vca56mwf"
+      },
+  ]
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(response => {
+        return response.ok ? response.json() : Promise.reject('Unsdasdas rereer')
+    })
+}
+
+
+
+(async function postAdd() {
+    const posts = await api("1");
+    // console.log(posts.response)
+      return output1.innerHTML = posts.response
+      .sort((a,b)=> a.id - b.id)
+      .map(post => 
+      `<div>
+    <div>${post.id}</div>
+    <ul>
+        <li>${post.name}</li>
+        <li>${post.username}</li>
+        <li><a href="${post.email}">${post.email}</a></li>
+    </ul>
+    </div> `
+       ).join('')
+   
+})();
 
     </script>
 </body>
