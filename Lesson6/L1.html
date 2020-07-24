@@ -114,7 +114,7 @@ fetch(URL+'1', {
 function ShowPost(results) {
  return  results.response.sort((a,b)=> a.id - b.id)
  .map(result => `<div>
-    <div>${result.id}</div>
+    <div>Пост номер: ${result.id}</div>
     <ul>
         <li>${result.name}</li>
         <li>${result.username}</li>
@@ -211,7 +211,7 @@ return  fetch(URL+num, {
       .sort((a,b)=> a.id - b.id)
       .map(post => 
       `<div>
-    <div>${post.id}</div>
+    <div>Пост номер: ${post.id}</div>
     <ul>
         <li>${post.name}</li>
         <li>${post.username}</li>
