@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         function getUser(id, callback) {
+//     setTimeout(() => {
+//         console.log("Reading user from database ....");
+//         callback({ id, name: "Bill" });
+//     }, 2000);
+// }
+
+// function getRepos(user, fn) {
+//     setTimeout(()=> {
+//         console.log("call back");
+//         return fn(["repo1", "repo2", "repo3"])
+//     }, 2000)
+//     //Your code here
+//     // return ["repo1", "repo2", "repo3"];
+// }
+
+// console.log("Begin");
+// getUser(3, function(user) {
+//     console.log(user);
+//     // getRepos here
+//     getRepos(user.name, function(repos) {
+//         console.log('repos: ', repos)
+//     })
+// });
+// console.log("After");
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+class GithubApi {
+    async showUser(user) {
+        const url = `https://api.github.com/users/${user}`;
+        const response = await fetch(url);
+        return await response.json();
+     }
+ }
+
+const githubApi = new  GithubApi();
+
+githubApi.showUser('design-class')
+.then(user => console.log(user.name, user.location))
+
+///////////////////
+async function getGithubUser(user) {
+        try {
+            const user = await showUser('non-exists-user')
+            console.log(user.name, user.location);
+        } catch(err) {
+            console.error(err.message="Не найдено");
+        }
+ }
+getGithubUser()
+//////////////Erorr
+
+// async function showUser(user) {
+//     const url = `https://api.github.com/users/${user}`;
+//     const response = await fetch(url);
+//     const body =  await response.json();
+//     if(response.status !== 200) {
+//         throw new Error(body.message)
+//     }
+//     return body;
+// }
+
+// showUser('non-exists-user')
+// .then(user => console.log(user.name, user.location))
+// .catch(err => console.error(err.message))
+/////////////////
+//  дздздздздзд?/??????
+
+async function showUserAndRepos(handle){
+   const [user, repos] =  await Promise.all([
+        fetchGithub(`/users/${handle}`),
+        fetchGithub(`/users/${handle}/repos`)
+    ]);
+
+    console.log(user.name);
+    console.log(repos.length);
+}
+showUserAndRepos('design-class');
+
+
+
+async function fetchGithub(endpoint) {
+    const url = `https://api.github.com${endpoint}`;
+    const response = await fetch(url);
+    return  await response.json();
+}
+
+async function showUserAndRepos(handle){
+    const user = await fetchGithub(`/users/${handle}`);
+    const repos = await fetchGithub(`/users/${handle}/repos`);
+    console.log(user.name, repos.length);
+}
+showUserAndRepos('design-class');
+
+
+
+
+    </script>
+</body>
+</html>

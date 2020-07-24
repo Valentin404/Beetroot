@@ -18,15 +18,11 @@ ShopProduct.prototype.setPrice = function(arg) {this.price = arg}
 ShopProduct.prototype.setTitle = function(arg) {this.title = arg}
 ShopProduct.prototype.getInfo = function() {return `${this.title}, ${this.price}`}
 
-function CDProduct(title, price, playLength){
-
+function CDproduct(title, price, playLength){
 ShopProduct.apply(this, arguments);
-
 this.playLength = playLength;
-
-
-
 }
+
 // function CDproduct(playLength) {
     
 //     this.playLength = playLength;
@@ -36,7 +32,10 @@ CDproduct.prototype = Object.create(ShopProduct.prototype);
 CDproduct.prototype.constructor = CDproduct;
 
 CDproduct.prototype.getPlayLength = function() {return this.playLength}
-
+// console.dir(CDproduct(12, 3, 4))
+// console.log(CDproduct.getPlayLength)
+// let a = new CDproduct(12, 3 , 4)
+// console.log(a.getPlayLength())
 
 function BookProduct(numPages) {
     this.numPages = numPages;

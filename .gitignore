@@ -1,2 +1,4 @@
-Lesson4/Lesson4.2/node_modules
-Lesson5/PlayList/node_modules
+$ cat .gitignore
+# Untracked files:
+Lesson4/Lesson4.2/node_modules/
+Lesson5/PlayList/node_modules/

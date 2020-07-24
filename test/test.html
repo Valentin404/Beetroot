@@ -7,35 +7,40 @@
 </head>
 <body>
     <script>
-let animal = {
-  eats: true
-};
-let fox = Object.create(animal, {
-jump: {
-    value: 90
-}
-})
-let chineseDictionary = Object.create(null);
-chineseDictionary.hello = "你好";
-chineseDictionary.bye = "再见";
+// let animal = {
+//   eats: true
+// };
+// let fox = Object.create(animal, {
+// jump: {
+//     value: 90
+// }
+// })
+// let chineseDictionary = Object.create(null);
+// chineseDictionary.hello = "你好";
+// chineseDictionary.bye = "再见";
 
-// console.log(chineseDictionary.hasOwnProperty(key));
-console.dir(Object.prototype)
-console.dir(animal)
-// getPrototypeOf(fox) === animal);
+// // console.log(chineseDictionary.hasOwnProperty(key));
+// console.dir(Object.prototype)
+// console.dir(animal)
+// // getPrototypeOf(fox) === animal);
 
-function Rabbit(name) {
-  this.name = name;
-}
-Rabbit.prototype.sayHi = function() {
-  console.log(this.name);
-};
+// function Rabbit(name) {
+//   this.name = name;
+// }
+// Rabbit.prototype.sayHi = function() {
+//   console.log(this.name);
+// };
 
-let rabbit = new Rabbit("Rabbit");
-rabbit.__proto__.sayHi(); 
-console.log()
-console.log()
-console.log()
+// let rabbit = new Rabbit("Rabbit");
+// rabbit.__proto__.sayHi(); 
+// console.log()
+// console.log()
+// console.log()\\
+console.log("Begin");getUser(1, callback);console.log("After");
+function callback(user) {    console.log(user);}
+function getUser(id, fn) {    setTimeout(() => {        console.log("Reading user from database ....");    
+    fn({ id, name: "Bill" });  }, 2000);}
+
     </script>
 </body>
 </html>
