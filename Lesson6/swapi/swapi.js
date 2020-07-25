@@ -91,33 +91,34 @@ function queryApi(endepoint) {
 ///////////////
 
 //?
-async function main() {
-    const {results: films} = await queryApi('films');
-    const {results: planets} = await queryApi('planets');
-
-    output.innerHTML = `Films ${films.length},  Planet ${planets.length}`;
-}
-main()   
-.finally(()=>{
-    spinner.remove();
-})
-
-/////////
-
 // async function main() {
-//     try{
-// const  [{results: films},  {results: planets}] = await Promise.all([
-//     queryApi('films'),
-//     queryApi('planets')
-
-// ])
+//     const {results: films} = await queryApi('films');
+//     const {results: planets} = await queryApi('planets');
 
 //     output.innerHTML = `Films ${films.length},  Planet ${planets.length}`;
-// } catch (error)  {
-// console.log(error)
-// output.textContent = 'Opps'
-// }}
+// }
 // main()   
 // .finally(()=>{
 //     spinner.remove();
 // })
+
+/////////
+
+async function main() {
+    try{
+const  [{results: films},  {results: planets}] = await Promise.all([
+    queryApi('films'),
+    queryApi('planets')
+
+])
+console.log(films)
+
+    output.innerHTML = `Films ${films.length},  Planet ${planets.length}`;
+} catch (error)  {
+console.log(error)
+output.textContent = 'Opps'
+}}
+main()   
+.finally(()=>{
+    spinner.remove();
+})

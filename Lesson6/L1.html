@@ -17,10 +17,14 @@
     <div id="spinner" class="spinner"><img src="swapi/i/spinner.gif" height="32"></div>
     <div class="div">Async and await</div>
     <div id="output1"></div>
+    <div class="div">Async, try, catsh, []</div>
+    <div id="output2"></div>
+    
  
     <script>
 const URL = 'https://jsonplaceholder.typicode.com/posts/';
 const output = document.getElementById("output");
+const output2 = document.getElementById("output2");
 const output1 = document.getElementById("output1");
 const spinner = document.getElementById('spinner');
 
@@ -200,6 +204,9 @@ return  fetch(URL+num, {
   .then(response => {
         return response.ok ? response.json() : Promise.reject('Unsdasdas rereer')
     })
+    .finally(()=>{
+    spinner.remove();
+})
 }
 
 
@@ -222,6 +229,28 @@ return  fetch(URL+num, {
    
 })();
 
+
+async function postPlus() {
+try {
+const [{response: posts},] = await Promise.all([
+    api("1"),
+])
+// console.log(posts)
+return output2.innerHTML = posts
+      .sort((a,b)=> a.id - b.id)
+      .map(post => 
+      `<div>
+    <div>Пост номер: ${post.id}</div>
+    <ul>
+        <li>${post.name}</li>
+        <li>${post.username}</li>
+        <li><a href="${post.email}">${post.email}</a></li>
+    </ul>
+    </div> `
+       ).join('')
+} catch(error) {console.log(error)}
+}
+postPlus()
     </script>
 </body>
 </html>
