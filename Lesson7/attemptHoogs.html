@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hooks</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16.8.6/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"
+    ></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script>
+
+const url = 'https://jsonplaceholder.typicode.com/users';
+
+
+// async function pullDate(url) {
+// const allParameters = await fetch(url);
+//  await  allParameters.json();
+// }
+// const date = pullDate(url)
+// console.log(date)
+
+ (function PullDate() {
+fetch(url)
+.then(response => response.json())
+// .then(response => console.log(response))
+.then(response => response.map(respon => respon.name))
+// .then(response => console.log(response))
+.then(response => response.map(resp => {
+return(
+
+  <div> 
+    <div>{resp.name}</div>
+    <div>{resp.username}</div>
+    <div>{resp.email}</div> 
+  </div>)
+}))
+ })()
+
+
+ ReactDOM.render(
+    < PullDate/>,
+    document.getElementById('root')
+)
+
+
+
+// const allParameters = await fetch(url);
+// return await  allParameters.json();
+
+
+function App() {
+    const [name]  = React.useState('name')
+    const [username] = React.useState('')
+    const [email] = React.useState('')
+  const all = () => {
+      
+  }
+    return(
+        <div> 
+          <div>{name}</div>
+          <div>{username}</div>
+          <div>{email}</div> 
+        </div>
+    )
+} 
+
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById('root')
+// )
+
+
+// async showUser(user) {
+//         const url = `https://api.github.com/users/${user}`;
+//         const response = await fetch(url);
+//         return await response.json();
+//      }
+
+
+
+
+
+// ReactDOM.render(
+//   <AppNew />,
+//   document.getElementById('root')
+// )
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Мониторить изменение
+// class AppNew extends React.Component{
+//   state = {
+//     msg: ''
+//   }
+//   update = event => {
+//     // debugger;
+    
+//   return this.setState({msg: event.target.value})
+//   }
+//   render() {
+//     return(
+//       <div>
+//         <h1>{this.state.msg}</h1>
+//         <input onChange={this.update} value={this.state.msg}></input>
+//       </div>
+//     )
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

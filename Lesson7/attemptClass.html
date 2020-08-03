@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- <script
+      crossorigin
+      src="https://unpkg.com/react@16.8.6/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"
+    ></script>
+    <script 
+    crossorigin 
+    src="https://unpkg.com/babel-standalone@6.26.0/babel.js">
+</script> -->
+  
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+    <script>
+
+// class Pull extends React.Component {
+//   state = {
+//     loading: true,
+//     person: null,
+//     filtr: null,
+//   }
+//   upfiltr = event => {
+//     return this.setState({filtr: event.target.value})
+//   }
+//   async componentDidMount() {
+//     const url = 'https://jsonplaceholder.typicode.com/users'
+//     const response = await fetch(url)
+//     const date = await response.json()
+//     this.setState({person: date, loading: false})
+//   }
+//   render() {
+//     const {person} = this.state;
+//     let style = {
+//       fontSize: 40,
+//       margin: 20
+//     }
+//     return(
+//          <div>
+//         {this.state.loading || !this.state.person ? (<div>loading..</div> 
+//         ) : this.state.filtr == null ? (
+//           person.map((item, i)=> (
+//             <div>
+//               <div style={style}>Number {i}</div>
+//               <div >{item.name}</div>
+//               <div >{item.username}</div>
+//               <div >{item.email}</div> 
+//             </div>
+//                 )
+//             )
+//         ): (
+//           person.map((item, i)=> (
+// <div>
+// {this.state.filtr == item.name ? (
+//     <div>
+//     <div style={style}>Number {i}</div>
+//     <div >{item.name}</div>
+//     <div >{item.username}</div>
+//     <div >{item.email}</div> 
+//   </div>
+// ): this.state.filtr == '' ? (
+//   <div>
+//   <div style={style}>Number {i}</div>
+//   <div >{item.name}</div>
+//   <div >{item.username}</div>
+//   <div >{item.email}</div> 
+// </div>
+// ): (
+//   <div>
+// {/* No reslt */}
+// </div>
+// )}
+// </div>
+//           ))
+
+//            )
+        
+//         }
+//        <div>
+//         <input onChange={this.upfiltr} value={this.state.filtr}></input>
+//       </div>
+//         </div> 
+
+
+//       )
+//   }
+// }
+
+
+// ReactDOM.render(
+//   <Pull />,
+//   document.getElementById('root')
+//   )
+
+
+
+
+
+
+"use strict";
+
+function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Pull =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Pull, _React$Component);
+
+  function Pull() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Pull);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Pull)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      loading: true,
+      person: null,
+      filtr: null
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "upfiltr", function (event) {
+      return _this.setState({
+        filtr: event.target.value
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass(Pull, [{
+    key: "componentDidMount",
+    value: async function componentDidMount() {
+      var url = 'https://jsonplaceholder.typicode.com/users';
+      var response = await fetch(url);
+      var date = await response.json();
+      this.setState({
+        person: date,
+        loading: false
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var person = this.state.person;
+      var style = {
+        fontSize: 40,
+        margin: 20
+      };
+      return React.createElement("div", null, this.state.loading || !this.state.person ? React.createElement("div", null, "loading..") : this.state.filtr == null ? person.map(function (item, i) {
+        return React.createElement("div", null, React.createElement("div", {
+          style: style
+        }, "Number ", i), React.createElement("div", null, item.name), React.createElement("div", null, item.username), React.createElement("div", null, item.email));
+      }) : person.map(function (item, i) {
+        return React.createElement("div", null, _this2.state.filtr == item.name ? React.createElement("div", null, React.createElement("div", {
+          style: style
+        }, "Number ", i), React.createElement("div", null, item.name), React.createElement("div", null, item.username), React.createElement("div", null, item.email)) : _this2.state.filtr == '' ? React.createElement("div", null, React.createElement("div", {
+          style: style
+        }, "Number ", i), React.createElement("div", null, item.name), React.createElement("div", null, item.username), React.createElement("div", null, item.email)) : React.createElement("div", null));
+      }), React.createElement("div", null, React.createElement("input", {
+        onChange: this.upfiltr,
+        value: this.state.filtr
+      })));
+    }
+  }]);
+
+  return Pull;
+}(React.Component);
+
+ReactDOM.render(React.createElement(Pull, null), document.getElementById('root'));
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
