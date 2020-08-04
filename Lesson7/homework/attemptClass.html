@@ -25,6 +25,30 @@ src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"
 <script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 <script type="text/babel">
 
+class Paint extends React.Component {
+constructor(props) {
+  super(props)
+  this.style = {
+    fontSize: 40,
+    margin: 20
+  }
+}
+
+render() {
+  // console.log(this.props)
+  return(
+    <div>
+          <div>
+          <div style={this.style}>Number {this.props.i+1}</div>
+          <div >{this.props.name}</div>
+          <div >{this.props.username}</div>
+          <div >{this.props.email}</div> 
+        </div>
+  </div>
+  )
+}
+}
+
 class Pull extends React.Component {
   state = {
     loading: true,
@@ -42,12 +66,14 @@ class Pull extends React.Component {
   }
   render() {
     const {person} = this.state;
-    let style = {
-      fontSize: 40,
-      margin: 20
-    }
     let styleSearch ={
       margin: '40px 0 0 35%'
+    }
+    function Checking(name) {
+      let todo= null;
+      if(typeof name === 'string') {
+       return  todo = name
+      }
     }
     return(
          <div>
@@ -58,12 +84,7 @@ class Pull extends React.Component {
         {this.state.loading || !this.state.person ? (<div>loading..</div> 
         ) : this.state.filtr == '' ? (
           person.map((item, i)=> (
-            <div>
-              <div style={style}>Number {i+1}</div>
-              <div >{item.name}</div>
-              <div >{item.username}</div>
-              <div >{item.email}</div> 
-            </div>
+            <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
                 )
             )
         ): (
@@ -71,10 +92,7 @@ class Pull extends React.Component {
 <div>
 {this.state.filtr == item.name ? (
     <div>
-    <div style={style}>Number {i}</div>
-    <div >{item.name}</div>
-    <div >{item.username}</div>
-    <div >{item.email}</div> 
+      <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
   </div>
 ): (
   <div>
@@ -88,9 +106,8 @@ class Pull extends React.Component {
   }
 }
 
-
 ReactDOM.render(
-  <Pull />,
+<Pull />,
   document.getElementById('root')
   )
 

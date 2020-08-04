@@ -73,7 +73,7 @@
         const updateCount = ({target}) => {
           const elementTitle = target.textContent;
           setCount(prev => {
-            debugger
+            // debugger
             const res = elementTitle === 'Increment' ? prev + step : prev - step;
             res === 0 ? setActive(true) : setActive(false)
 

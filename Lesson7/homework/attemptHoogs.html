@@ -15,139 +15,124 @@
     <div id="root"></div>
 
     <script
-      crossorigin
-      src="https://unpkg.com/react@16.8.6/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"
-    ></script>
-    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-
-    <script>
-
-const url = 'https://jsonplaceholder.typicode.com/users';
-
-
-// async function pullDate(url) {
-// const allParameters = await fetch(url);
-//  await  allParameters.json();
-// }
-// const date = pullDate(url)
-// console.log(date)
-
- (function PullDate() {
-fetch(url)
-.then(response => response.json())
-// .then(response => console.log(response))
-.then(response => response.map(respon => respon.name))
-// .then(response => console.log(response))
-.then(response => response.map(resp => {
-return(
-
-  <div> 
-    <div>{resp.name}</div>
-    <div>{resp.username}</div>
-    <div>{resp.email}</div> 
-  </div>)
-}))
- })()
-
-
- ReactDOM.render(
-    < PullDate/>,
-    document.getElementById('root')
-)
-
-
-
-// const allParameters = await fetch(url);
-// return await  allParameters.json();
-
-
-function App(props) {
-    const [all, setAll]  = React.useState('')
-    // const [name, setName]  = React.useState('')
-    // const [username, setUsername] = React.useState('')
-    // const [email, setEmail] = React.useState('')
-  // const all = () => {
-      useEffect(()=> {
-        // let ignore = false;
-        async function fetchDate() {
-    const url = 'https://jsonplaceholder.typicode.com/users'
-    const response = await fetch(url)
-    const date = await response.json();
-    // if (!ignore) setProduct(date);
-    setAll(date)
-        }
-        fetchDate();
-        // return () => { ignore = true };
-      }
-      )
-  // }
-
-
-    return(
-        <div> 
-          <div>{name}</div>
-          <div>{username}</div>
-          <div>{email}</div> 
+crossorigin
+src="https://unpkg.com/react@16.8.6/umd/react.development.js"
+></script>
+<script
+crossorigin
+src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"
+></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script type="text/babel">
+import React, { useState, useEffect } from 'react'
+// const url = 'https://jsonplaceholder.typicode.com/users';
+function Paint(props) {
+  let style = {
+    fontSize: 40,
+    margin: 20
+  }
+  return(
+    <div>
+          <div>
+          <div style={style}>Number {props.i+1}</div>
+          <div >{props.name}</div>
+          <div >{props.username}</div>
+          <div >{props.email}</div> 
         </div>
+  </div>
+  )
+}
+
+
+function AppNew(props) {
+  const [user, setUser]  = React.useState({loaded: false, list: null})
+  const url = 'https://jsonplaceholder.typicode.com/users';
+  const [filtr, setFiltr] = React.useState('')
+  
+
+const upfiltr = event => setFiltr(event.target.value);
+  useEffect(()=>{
+     fetch(url)
+     .then(response =>
+     {  return response.ok ? response.json() : Promise.reject('What do you mean?')})
+     .then(response =>  setUser({
+         loaded: true,
+         list: response,
+       }
+       )
+     )
+
+  })
+  function Checking(name) {
+      let todo= null;
+      if(typeof name === 'string') {
+       return  todo = name
+      }
+    }
+let style = {
+  fontSize: 40,
+  margin: 20
+}
+if(!user.loaded){
+return <div>Loading...</div>
+}
+
+if(filtr === '') {
+  return (
+   
+    <div>
+      <div>
+      <h1>Search: {filtr}</h1>
+        <input onChange={upfiltr} value={filtr} />
+      </div>
+      {user.list.map((item, i)=>(
+        <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
+      ))}
+    </div>
     )
+} 
+else {
+      return(
+        <div>
+        <div>
+        <h1>Search: {filtr}</h1>
+            <input onChange={upfiltr} value={filtr} />
+          </div>
+        <div>
+          {user.list.map((item, i)=> filtr == item.name ? (
+            <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
+          ) : <div></div>
+          )}
+      </div>
+      </div>
+      )
+}
 } 
 
 
-// ReactDOM.render(
-//   <AppNew message={'Hello'}/>,
-//   document.getElementById('root')
-// )
+// const PropTypes = {
+//   firstName(props, propName, componentName) {
+//     if(typeof props[propName] !== 'string') {
+//       return new Error('Your ')
+//     }
+//     console.log(propName)
+//   }
+// }
 
-// function AppNew(props) {
-//   const [msg, setMsg] = React.useState('');
-
-//   const update = event => setMsg(event.target.value)
-//   return(
-//     <div>
-//             <h1>{msg}</h1>
-//             <input onChange={update} value={msg}></input>
-//           </div>
-//   )
+// Paint.propTypes = {
+// name: PropTypes.string,
+// // .isRequired, 
+// username:  PropTypes.string,
+// // .isRequired,
+// email: PropTypes.string
 // }
 
 
-
-
-
-
-
-
-
-
-// ReactDOM.render(
-//     <App />,
-//     document.getElementById('root')
-// )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ReactDOM.render(
+<AppNew />,
+document.getElementById('root')
+)
 
 
     </script>
