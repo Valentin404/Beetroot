@@ -64,12 +64,12 @@ const upfiltr = event => setFiltr(event.target.value);
      )
 
   })
-  function Checking(name) {
-      let todo= null;
-      if(typeof name === 'string') {
-       return  todo = name
-      }
-    }
+  // function Checking(name) {
+  //     let todo= null;
+  //     if(typeof name === 'string') {
+  //      return  todo = name
+  //     }
+  //   }
 let style = {
   fontSize: 40,
   margin: 20
@@ -87,7 +87,7 @@ if(filtr === '') {
         <input onChange={upfiltr} value={filtr} />
       </div>
       {user.list.map((item, i)=>(
-        <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
+        <Paint name={item.name} username={item.username} email={item.email} i={i}/>
       ))}
     </div>
     )
@@ -101,7 +101,7 @@ else {
           </div>
         <div>
           {user.list.map((item, i)=> filtr == item.name ? (
-            <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
+            <Paint name={item.name} username={item.username} email={item.email} i={i}/>
           ) : <div></div>
           )}
       </div>
@@ -120,20 +120,19 @@ else {
 //   }
 // }
 
-// Paint.propTypes = {
-// name: PropTypes.string,
-// // .isRequired, 
-// username:  PropTypes.string,
-// // .isRequired,
-// email: PropTypes.string
-// }
+Paint.propTypes = {
+name: PropTypes.string,
+// .isRequired, 
+username:  PropTypes.string,
+// .isRequired,
+email: PropTypes.string
+}
 
 
 ReactDOM.render(
 <AppNew />,
 document.getElementById('root')
 )
-
 
     </script>
   </body>

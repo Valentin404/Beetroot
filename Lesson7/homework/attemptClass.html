@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab</title>
+    <title>Class</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -69,12 +69,12 @@ class Pull extends React.Component {
     let styleSearch ={
       margin: '40px 0 0 35%'
     }
-    function Checking(name) {
-      let todo= null;
-      if(typeof name === 'string') {
-       return  todo = name
-      }
-    }
+    // function Checking(name) {
+    //   let todo= null;
+    //   if(typeof name === 'string') {
+    //    return  todo = name
+    //   }
+    // }
     return(
          <div>
           <div style={styleSearch}>
@@ -84,7 +84,7 @@ class Pull extends React.Component {
         {this.state.loading || !this.state.person ? (<div>loading..</div> 
         ) : this.state.filtr == '' ? (
           person.map((item, i)=> (
-            <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
+            <Paint name={item.name} username={item.username} email={item.email} i={i}/>
                 )
             )
         ): (
@@ -92,7 +92,8 @@ class Pull extends React.Component {
 <div>
 {this.state.filtr == item.name ? (
     <div>
-      <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
+      <Paint name={item.name} username={item.username} email={item.email} i={i}/>
+  
   </div>
 ): (
   <div>
@@ -106,11 +107,20 @@ class Pull extends React.Component {
   }
 }
 
+Paint.propTypes = {
+name: PropTypes.string,
+// .isRequired, 
+username:  PropTypes.string,
+// .isRequired,
+email: PropTypes.string
+}
+
+
 ReactDOM.render(
 <Pull />,
   document.getElementById('root')
   )
-
+  // <Paint name={Checking(item.name)} username={Checking(item.username)} email={Checking(item.email)} i={i}/>
     </script>
   </body>
 </html>
