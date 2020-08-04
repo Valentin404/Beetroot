@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+<script
+crossorigin
+src="https://unpkg.com/react@16.8.6/umd/react.development.js"
+></script>
+<script
+crossorigin
+src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"
+></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script type="text/babel">
+
+class Pull extends React.Component {
+  state = {
+    loading: true,
+    person: null,
+    filtr: '',
+  }
+  upfiltr = event => {
+    return this.setState({filtr: event.target.value})
+  }
+  async componentDidMount() {
+    const url = 'https://jsonplaceholder.typicode.com/users'
+    const response = await fetch(url)
+    const date = await response.json()
+    this.setState({person: date, loading: false})
+  }
+  render() {
+    const {person} = this.state;
+    let style = {
+      fontSize: 40,
+      margin: 20
+    }
+    let styleSearch ={
+      margin: '40px 0 0 35%'
+    }
+    return(
+         <div>
+          <div style={styleSearch}>
+            <h4>Search</h4>
+        <input  onChange={this.upfiltr} value={this.state.filtr}></input>
+      </div>
+        {this.state.loading || !this.state.person ? (<div>loading..</div> 
+        ) : this.state.filtr == '' ? (
+          person.map((item, i)=> (
+            <div>
+              <div style={style}>Number {i+1}</div>
+              <div >{item.name}</div>
+              <div >{item.username}</div>
+              <div >{item.email}</div> 
+            </div>
+                )
+            )
+        ): (
+          person.map((item, i)=> (
+<div>
+{this.state.filtr == item.name ? (
+    <div>
+    <div style={style}>Number {i}</div>
+    <div >{item.name}</div>
+    <div >{item.username}</div>
+    <div >{item.email}</div> 
+  </div>
+): (
+  <div>
+</div>
+)}
+</div>
+          )))
+        }
+        </div> 
+      )
+  }
+}
+
+
+ReactDOM.render(
+  <Pull />,
+  document.getElementById('root')
+  )
+
+    </script>
+  </body>
+</html>

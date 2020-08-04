@@ -65,13 +65,28 @@ return(
 // return await  allParameters.json();
 
 
-function App() {
-    const [name]  = React.useState('name')
-    const [username] = React.useState('')
-    const [email] = React.useState('')
-  const all = () => {
-      
-  }
+function App(props) {
+    const [all, setAll]  = React.useState('')
+    // const [name, setName]  = React.useState('')
+    // const [username, setUsername] = React.useState('')
+    // const [email, setEmail] = React.useState('')
+  // const all = () => {
+      useEffect(()=> {
+        // let ignore = false;
+        async function fetchDate() {
+    const url = 'https://jsonplaceholder.typicode.com/users'
+    const response = await fetch(url)
+    const date = await response.json();
+    // if (!ignore) setProduct(date);
+    setAll(date)
+        }
+        fetchDate();
+        // return () => { ignore = true };
+      }
+      )
+  // }
+
+
     return(
         <div> 
           <div>{name}</div>
@@ -81,58 +96,38 @@ function App() {
     )
 } 
 
+
+// ReactDOM.render(
+//   <AppNew message={'Hello'}/>,
+//   document.getElementById('root')
+// )
+
+// function AppNew(props) {
+//   const [msg, setMsg] = React.useState('');
+
+//   const update = event => setMsg(event.target.value)
+//   return(
+//     <div>
+//             <h1>{msg}</h1>
+//             <input onChange={update} value={msg}></input>
+//           </div>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
 // ReactDOM.render(
 //     <App />,
 //     document.getElementById('root')
 // )
 
-
-// async showUser(user) {
-//         const url = `https://api.github.com/users/${user}`;
-//         const response = await fetch(url);
-//         return await response.json();
-//      }
-
-
-
-
-
-// ReactDOM.render(
-//   <AppNew />,
-//   document.getElementById('root')
-// )
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Мониторить изменение
-// class AppNew extends React.Component{
-//   state = {
-//     msg: ''
-//   }
-//   update = event => {
-//     // debugger;
-    
-//   return this.setState({msg: event.target.value})
-//   }
-//   render() {
-//     return(
-//       <div>
-//         <h1>{this.state.msg}</h1>
-//         <input onChange={this.update} value={this.state.msg}></input>
-//       </div>
-//     )
-//   }
-// }
 
 
 

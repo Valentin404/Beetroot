@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16.8.6/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"
+    ></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+
+      // function App(props) {
+      //   const [msg, setMsg] = React.useState('');
+      //
+      //   const update = event => setMsg(event.target.value)
+      //
+      //   return (
+      //           <div>
+      //             <h1>{msg}</h1>
+      //
+      //             <input onChange={update} value={msg} />
+      //           </div>
+      //   )
+      // }
+
+      // class App extends React.Component {
+      //   state = {
+      //     msg: ''
+      //   }
+      //
+      //   update = event => {
+      //     debugger
+      //
+      //     return this.setState({ msg: event.target.value})
+      //  }
+      //
+      //   render() {
+      //     return (
+      //             <div>
+      //               <h1>{this.state.msg}</h1>
+      //               <input onChange={this.update} value={this.state.msg} />
+      //             </div>
+      //     )
+      //   }
+      // }
+
+      function App({step = 1}) {
+        const [msg, updateMsg] = React.useState('');
+        const [count, setCount] = React.useState(0);
+        const [active, setActive] = React.useState(count === 0);
+
+        const update = ({target}) => updateMsg(target.value);
+
+        const updateCount = ({target}) => {
+          const elementTitle = target.textContent;
+          setCount(prev => {
+            debugger
+            const res = elementTitle === 'Increment' ? prev + step : prev - step;
+            res === 0 ? setActive(true) : setActive(false)
+
+            return res
+          })
+        }
+
+          const reset = () => {
+            setActive(true)
+            setCount(0)
+          }
+
+          return (
+                  <div>
+                    <h1>Hello {msg}</h1>
+                    <input value={msg} onChange={update}/>
+
+                    <div>
+                      <h1>Count: {count}</h1>
+                      <button onClick={updateCount}>Increment</button>
+                      <button onClick={updateCount}>Decrement</button>
+                      <button disabled={active} onClick={reset}>Reset</button>
+                    </div>
+                  </div>
+          )
+      }
+
+      // class App extends React.Component {
+      //   state = {
+      //     allItems: [
+      //       {id: 'a', value: 'apple'},
+      //       {id: 'b', value: 'cherry'},
+      //       {id: 'c', value: 'peach'},
+      //       {id: 'd', value: 'banana'},
+      //     ]
+      //   }
+      //
+      //   render() {
+      //     const {allItems} = this.state;
+      //
+      //     return (
+      //             <div>
+      //               {
+      //                 allItems.map(item => (
+      //                         <div key={item.id}>
+      //                           {item.value}
+      //                         </div>
+      //                 ))
+      //               }
+      //             </div>
+      //     )
+      //   }
+      // }
+
+      ReactDOM.render(<App />, root)
+    </script>
+  </body>
+</html>
