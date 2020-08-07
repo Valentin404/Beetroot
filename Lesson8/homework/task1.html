@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github users</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16.8.3/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16.8.3/umd/react-dom.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/prop-types@15.7.2/prop-types.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"
+    ></script>
+
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+  
+    //   class From extends React.Component {
+    //    state = {
+    //      value: ''
+    //    };
+    //    update = event => this.setState({value: event.target.value})
+    //    handleSubmit = event => {
+    //      event.preventDefault();
+
+    //      this.props.sumbit(this.state.value)
+    //      this.setState({value: ''})
+    //    }
+    //    render() {
+    //      return (
+    //        <from onSubmit={this.handleSubmit}>
+    //          <div className={'lool'}>
+    //          <div>
+    //            <input
+    //            type={'text'}
+    //            value={this.state.value}
+    //            onChange={this.update}
+    //            />
+    //            <button 
+    //            onClick={(evt) => this.props.addUser(this.state.value)}
+    //      >Add User </button>
+    //          </div>
+    //          </div>
+    //        </from>
+    //      )
+    //    }
+    //  }
+
+     
+    //  class App extends React.Component{
+    //    state = {
+    //      data: []
+    //    };
+    //     // val = 'Valentin404' 
+    //    addUser = async val => {
+    //      const url = `https://api.github.com/users/${val}`
+    //      const result = await fetch(url)
+    //      const user = await result.json();
+     
+    //      this.setState({data: [...this.state.data, user]})
+
+    //    }
+  
+    //    render() {
+
+    //      return (
+    //        <div className='container'> 
+    //        <From addUser={this.addUser}/>
+    //        <CartList data={this.state.data} />
+     
+    //        </div>
+    //      )
+    //    }
+    //  }
+
+
+
+
+function From(props){
+  const [value, setValue] = React.useState('')
+  const update = event => setValue(event.target.value)
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    props.sumbit(value)
+    setValue({value: ''})
+  }
+  return (
+           <from onSubmit={handleSubmit}>
+             <div className={'lool'}>
+             <div>
+               <input
+               type={'text'}
+               value={value}
+               onChange={update}
+               />
+               <button 
+               onClick={(evt) => props.addUser(value)}
+         >Add User </button>
+             </div>
+             </div>
+           </from>
+         )
+}
+
+ const Cart = ({profile}) => (
+   <div className="cart">
+    <h3>{profile.id}</h3>
+    <p>{profile.login}</p>
+    <img src={profile.avatar_url}/>
+    </div>
+ )
+ 
+ const CartList = ({data}) => (
+   <div >
+     {data.map(profile => (
+ <Cart key={profile.id} profile={profile}/>
+     ))}
+    
+    </div>
+ )
+
+ function App(props) {
+ let [data, setData] = React.useState([])
+
+const addUser = async val => {
+  const url = `https://api.github.com/users/${val}`
+  const result = await fetch(url)
+  const user = await result.json();
+  setData(data = [...data, user])
+ }
+
+ return (
+  <div className='container'> 
+  <From addUser={addUser}/>
+  <CartList data={data} />
+
+  </div>
+)
+ }
+
+
+ReactDOM.render(<App />, root);
+  
+
+    </script>
+  </body>
+</html>
