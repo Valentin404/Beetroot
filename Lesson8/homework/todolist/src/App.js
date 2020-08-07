@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import TodoList from "./TodoList";
 import NewTodo from "./NewTodo";
 import {defaultState} from './data';
+import ErrorBoundary from './ErrorBoundary'
+// const LicenseAgreement = lazy(()=>import('./LicenseAgreement'))
+import NewError from './NewError'
 
 class App extends React.Component {
     state = {
         todos: defaultState,
+        // isShowLincense: false
     }
-
+  
     addTodo = newTodo => this.setState(({todos}) => ({
         todos: [newTodo, ...todos]
     }))
@@ -35,13 +39,14 @@ class App extends React.Component {
         const completedTodos = todos.filter(todo => todo.completed)
         const activeTodos = todos.filter(todo => !todo.completed)
         return (
+           
             <div className={"container"}>
                 <h2>TODO list:</h2>
                 <br/>
                 <NewTodo addTodo={this.addTodo}
                   markFiltr={this.markFiltr}
                 />
-
+ <ErrorBoundary>  
                 <div className={"row"}>
                     <div className={"col-md-5"}>
                         <TodoList
@@ -60,7 +65,7 @@ class App extends React.Component {
                         />
                     </div>
                 </div>
-
+</ErrorBoundary>
                 <button className={"btn btn-success btn-lg btn-block"} onClick={this.markAllCompleted}>
                     Complete all todos
                 </button>
@@ -68,9 +73,10 @@ class App extends React.Component {
                     Mark all as active
                 </button>
                 <div>
-              
                 </div>
+                <ErrorBoundary>  <NewError/></ErrorBoundary>
             </div>
+          
         );
     }
 
