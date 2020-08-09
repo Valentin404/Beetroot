@@ -4,7 +4,7 @@ const config = {
 };
 
 function fetchConfiguration() {
-  return new Promise(resolve => setTimeout(() => resolve(config), 300));
+  return new Promise(resolve => setTimeout(() => resolve(config), 2000));
 }
 
 export default fetchConfiguration;

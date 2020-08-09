@@ -7,6 +7,7 @@ const withConfig = lifecycle({
     state: { config: {} },
     componentDidMount() {
         configPromise.then(config => this.setState({ config }));
+
     }
 });
 
