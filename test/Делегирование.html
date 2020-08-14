@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1 id="text">Java</h1>
+  <button onclick="toggleClass()" id="button">Onclick</button>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li><span>4</span></li>
+    <li>5</li>
+  </ul>
+
+  <div id="elem1">elem1
+    <div id="elem2">elem112
+      <div id="elem3">elem11233131311</div>
+    </div>
+  </div>
+    <script>
+
+
+let text = document.getElementById('text');
+let button = document.getElementById('button')
+const toggleClass= ()=> {
+  // text.classList=='newClass'? text.classList.remove('newClass') : text.classList.add('newClass')
+text.getAttribute('class')=='newClass'?((()=>{text.setAttribute('class', ''); button.innerHTML= text.textContent})() ) :text.setAttribute('class', 'newClass')
+
+}
+
+
+let ul = document.querySelector('ul')
+
+ul.addEventListener('click', (event)=>{
+  event.target.closest('li');  //Все дальнейшие процедуры будут только с li без вложеностей
+event.target.tagName== 'LI'?   event.target.innerHTML =  event.target.innerHTML+2: console.log(event.target.textContent) 
+// if(event.target.tagName== 'LI') {
+//     event.target.innerHTML =  event.target.innerHTML+2
+//   }
+})
+
+
+elem1.addEventListener('click', function(event){
+  console.log(this, event.target.innerHTML = event.target.innerHTML+2)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class Media  {
+// constructor(title, duration) {
+//     this.title = title;
+//     this.duration = duration;
+//     this.isPlaying = false;
+// }
+// play() {
+//     this.isPlaying = true;
+// }
+// stop() {
+//     this.isPlaying = false;
+// }
+// }
+
+
+// class Movie extends Media {
+//         constructor(title, year, duration) {
+//             super()
+//             this.year = year;
+//             // Media.call(this, title, duration)
+//         }
+//       toHtml() {
+//             return `<div class="row py-3 ${this.isPlaying ? 'current': ''}">
+//             <div class="col-sm-9">${this.title} - ${this.year}</div>
+//                <div class="col-sm-3">${this.duration}</div> 
+//                </div>`
+//         }
+//     }
+//     class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+// }
+// class User extends Person {
+//   constructor(age) {
+//     super();
+//     this.age = age;
+//   }
+//   getInfo() {
+//     return `${this.name} has ${this.age} years old`;
+//   }
+// }
+// const user = new User("Bill", 20);
+// console.log(user.getInfo())
+// undefined has Bill years old
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   get getName() {
+//     return this.name;
+//   }
+// }
+// const user = new Person("Bill");
+// console.log(user.getName) 
+
+// let a = new Promise( (fn) => {fn("fort")})
+// a.then((x) => {console.log(`Good morning ${x}`)})
+
+
+// 'use strict';
+// var promiseCount = 0;
+
+// function testPromise() {
+//     let thisPromiseCount = ++promiseCount;
+
+//     let log = document.getElementById('log');
+//     log.insertAdjacentHTML('beforeend', thisPromiseCount +
+//         ') Started (<small>Sync code started</small>)<br/>');
+
+//     // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s)
+//     let p1 = new Promise(
+//         // The executor function is called with the ability to resolve or
+//         // reject the promise
+//        (resolve, reject) => {
+//             log.insertAdjacentHTML('beforeend', thisPromiseCount +
+//                 ') Promise started (<small>Async code started</small>)<br/>');
+//             // This is only an example to create asynchronism
+//             window.setTimeout(
+//                 function() {
+//                     // We fulfill the promise !
+//                     resolve(thisPromiseCount);
+//                 }, Math.random() * 20 + 10);
+//         }
+//     );
+
+//     // We define what to do when the promise is resolved with the then() call,
+//     // and what to do when the promise is rejected with the catch() call
+//     p1.then(
+//         // Log the fulfillment value
+//         function(val) {
+//             log.insertAdjacentHTML('beforeend', val +
+//                 ') Promise fulfilled (<small>Async code terminated</small>)<br/>');
+//         }).catch(
+//         // Log the rejection reason
+//        (reason) => {
+//             console.log('Handle rejected promise ('+reason+') here.');
+//         });
+
+//     log.insertAdjacentHTML('beforeend', thisPromiseCount +
+//         ') Promise made (<small>Sync code terminated</small>)<br/>');
+// }
+
+// async function foo() {
+//    const result1 = await new Promise((resolve) => setTimeout(() => resolve('1')))
+//    const result2 = await new Promise((resolve) => setTimeout(() => resolve('2')))
+// }
+// foo()
+
+
+// function resolveAfter2Seconds() {
+//   console.log("starting slow promise")
+//   return new Promise(resolve => {
+//     setTimeout(function() {
+//       resolve("slow")
+//       console.log("slow promise is done")
+//     }, 2000)
+//   })
+// }
+
+// function resolveAfter1Second() {
+//   console.log("starting fast promise")
+//   return new Promise(resolve => {
+//     setTimeout(function() {
+//       resolve("fast")
+//       console.log("fast promise is done")
+//     }, 1000)
+//   })
+// }
+
+// async function sequentialStart() {
+//   console.log('==SEQUENTIAL START==')
+
+//   // 1. Execution gets here almost instantly
+//   const slow = await resolveAfter2Seconds()
+//   console.log(slow) // 2. this runs 2 seconds after 1.
+
+//   const fast = await resolveAfter1Second()
+//   console.log(fast) // 3. this runs 3 seconds after 1.
+// }
+
+// async function concurrentStart() {
+//   console.log('==CONCURRENT START with await==');
+//   const slow = resolveAfter2Seconds() // starts timer immediately
+//   const fast = resolveAfter1Second() // starts timer immediately
+
+//   // 1. Execution gets here almost instantly
+//   console.log(await slow) // 2. this runs 2 seconds after 1.
+//   console.log(await fast) // 3. this runs 2 seconds after 1., immediately after 2., since fast is already resolved
+// }
+
+// function concurrentPromise() {
+//   console.log('==CONCURRENT START with Promise.all==')
+//   return Promise.all([resolveAfter2Seconds(), resolveAfter1Second()]).then((messages) => {
+//     console.log(messages[0]) // slow
+//     console.log(messages[1]) // fast
+//   })
+// }
+
+// async function parallel() {
+//   console.log('==PARALLEL with await Promise.all==')
+  
+//   // Start 2 "jobs" in parallel and wait for both of them to complete
+//   await Promise.all([
+//       (async()=>console.log(await resolveAfter2Seconds()))(),
+//       (async()=>console.log(await resolveAfter1Second()))()
+//   ])
+// }
+// function log() {
+//     return console.log("//////////////////////////")
+// }
+// sequentialStart() // after 2 seconds, logs "slow", then after 1 more second, "fast"
+// console.log("///////////////////////////////")
+// // wait above to finish
+// setTimeout(concurrentStart, 4000) // after 2 seconds, logs "slow" and then "fast"
+// // setTimeout(log(),3500)
+// // wait again
+// setTimeout(concurrentPromise, 7000) // same as concurrentStart
+// // setTimeout(log(),5000)
+// // wait again
+// setTimeout(parallel, 10000)
+
+// function getProcessedData(url) {
+//   return downloadData(url) // returns a promise
+//     .catch(e => {
+//       return downloadFallbackData(url)  // returns a promise
+//     })
+//     .then(v => {
+//       return processDataInWorker(v)  // returns a promise
+//     }) 
+// }
+// const promiseA = new Promise( (resolutionFunc,rejectionFunc) => {
+//     resolutionFunc(777);
+// });
+// // At this point, "promiseA" is already settled.
+// promiseA.then( (val) => console.log("asynchronous logging has val:",val) );
+// console.log("immediate logging");
+
+// function lod(url) {
+// return newfn(url)
+// .catch(e => {return newfndown(url)})
+// .then(v=>{return nweFnproc(v)})
+// }
+
+// async function getProcess(url) {
+//     let v;
+//     try {
+//         v = await newfn(url)
+//     } catch(e) {
+//         v = await n
+//     }
+// }
+
+// async function getProcessedData(url) {
+//   let v
+//   try {
+//     v = await downloadData(url)
+//   } catch(e) {
+//     v = await downloadFallbackData(url)
+//   }
+//   try {
+//     return await processDataInWorker(v)  // Note the `return await` vs. just `return`
+//   } catch (e) {
+//     return null
+//   }
+// }
+
+// let myFirstPromise = new Promise((resolve, reject) => {
+//   // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+//   // In this example, we use setTimeout(...) to simulate async code. 
+//   // In reality, you will probably be using something like XHR or an HTML5 API.
+//   setTimeout( function() {
+//     resolve("Success!")  // Yay! Everything went well!
+//   }, 2000) 
+// }) 
+
+// myFirstPromise.then((successMessage) => {
+//   // successMessage is whatever we passed in the resolve(...) function above.
+//   // It doesn't have to be a string, but if it is only a succeed message, it probably will be.
+//   console.log("Yay! " + successMessage) 
+// });
+
+// function callbackToPromise(method, ...args) {
+//     return new Promise(function(resolve, reject) {
+//         return method(...args, function(err, result) {
+//             return err ? reject(err) : resolve(result);
+//         });
+//     });
+// }
+
+
+  </script>
+</body>
+</html>
