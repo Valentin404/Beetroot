@@ -6,6 +6,9 @@ import FilmsForm from "./forms/FilmsForm"
 import TopNavigation from "./TopNavigation"
 import {generate as id} from "shortid"
 
+import RegistrationForm from './forms/RegistrationForm'
+import LoginForm from './forms/LoginForm'
+
 const AppContext = React.createContext()
 export {AppContext}
 
@@ -107,6 +110,8 @@ class App extends Component {
                             <FilmsList films={films}/>
                         </div>
                     </div>
+                    <RegistrationForm />
+                    <LoginForm />
                 </div>
             </AppContext.Provider>
         )
