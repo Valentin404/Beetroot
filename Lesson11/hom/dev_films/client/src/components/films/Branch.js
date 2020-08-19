@@ -3,6 +3,9 @@ import FilmCard from './FilmCard'
 import Featured from './Featured'
 import PropTypes from "prop-types"
 
+
+// Если что, я так назвал потому что так было сказано в лмс
+
 const Branch = ({film, iseye}) => {
     return (
         iseye

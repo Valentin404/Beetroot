@@ -1,4 +1,5 @@
 import React from 'react'
+import { times } from 'lodash'
 
 const registrationData = {
 email: '', 
@@ -11,7 +12,6 @@ class RegistrationForm extends React.Component {
 state = {
     data: registrationData
 }
-
 changeData = event => {
     this.setState({ data: {
 ...this.state.data, [event.target.name] : event.target.value
