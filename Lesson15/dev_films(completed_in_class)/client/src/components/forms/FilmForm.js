@@ -1,8 +1,7 @@
 import React, {Component} from "react"
+import {Link, Redirect} from "react-router-dom"
 import ReactImageFallback from "react-image-fallback"
-import {Link, Redirect, withRouter} from 'react-router-dom';
 import FormMessage from './FormMessage'
-import api from '../../api'
 
 const initialData = {
     title: "",
@@ -10,7 +9,7 @@ const initialData = {
     director: "",
     duration: "",
     price: "",
-    img: "",
+    img: "http://via.placeholder.com/250x250",
     featured: false,
     _id: null,
 }
@@ -20,23 +19,25 @@ class FilmForm extends Component {
         data: initialData,
         errors: {},
         isLoading: false,
-        redirect: false,
+        redirect: false
     }
+
     componentDidMount() {
-        if (this.props.film?._id) {
+        if (this.props.film._id) {
             this.setState({data: this.props.film})
-         
-        } 
+        }
     }
+
     static getDerivedStateFromProps(props, state) {
         const {film} = props
-        if (film?._id && film._id !== state.data._id) {
+
+        if (film._id && film._id !== state.data._id) {
             return {
                 data: film,
                 error: {},
             }
         }
-        if (!film?._id && state.data._id !== null) {
+        if (!film._id && state.data._id !== null) {
             return {
                 data: initialData,
                 error: {},
@@ -51,13 +52,14 @@ class FilmForm extends Component {
         const errors = this.validate(this.state.data)
         this.setState({errors})
         if (Object.keys(errors).length === 0) {
-            this.setState({isLoading: true})
-            this.props.submit(this.state.data).then(err => this.setState({
-                    isLoading: false,
-                    redirect: true,
+            this.setState({loading: true})
+            this.props.submit(this.state.data).catch(err =>  this.setState({
+                    errors: err.response.data.errors,
+                    loading: false,
                 }),
+
             )
-            // .then(() => this.setState({redirect: true}))
+            .then(() => this.setState({redirect: true}))
         }
     }
 
@@ -91,8 +93,8 @@ class FilmForm extends Component {
     }
 
     render() {
-        const {data, errors, isLoading, redirect} = this.state
-        const formClassName = isLoading ? 'ui form loading' : 'ui form';
+        const {data, errors, loading, redirect} = this.state
+        const formClassName = loading ? "ui form loading" : "ui form"
 
         return (
             <form className={formClassName} onSubmit={this.handleSubmit}>
