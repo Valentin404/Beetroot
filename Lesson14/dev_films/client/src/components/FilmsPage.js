@@ -6,7 +6,6 @@ import {AppContext} from './App'
 import FilmForm from "./forms/FilmForm"
 import {orderBy, find} from 'lodash';
 import AdminRoute from './HOC/AdminRoute';
-// import AdminRoute from './HOC/AdminRoute';
 
 class FilmsPage extends Component {
     state = {
@@ -70,38 +69,33 @@ class FilmsPage extends Component {
                     user: this.props.user,
                 }}
             >
-                
-                {AdminRoute(<Route path='/films'/>)}  {/* */}
-                    {/* <AdminRoute /> */}
+            
                     
                 <div className="ui stackable grid">
-                    {this.props.user.role === 'admin' ? (
-                        <>
-                            <Route
+                <>
+                            <AdminRoute
                                 path="/films/new"
-                                render={(props) => (  // props 
+                                user={this.props.user}
+                                render={() => (  
                                     <div className="six wide column">
-                                       <FilmForm {...props} submit={this.saveFilm} film={{}}  />  {/* //props */}
+                                       <FilmForm submit={this.saveFilm} film={{}}  /> 
                                     </div>
                                 )}
                             />
 
-                            <Route
+                            <AdminRoute
                                 path="/films/edit/:_id"
-                                render={props => (
+                                user={this.props.user}
+                                render={({match}) => (
                                     <div className="six wide column">
                                         <FilmForm
-                                            submit={this.saveFilm} {...props} //props
-                                            film={   find(films, { _id: props.match.params._id,}) || {} }
+                                            submit={this.saveFilm} 
+                                            film={   find(films, { _id: match.params._id,}) || {} }
                                         />
                                     </div>
                                 )}
                             />
                         </>
-                    ) : (
-                        <Route path="/films/*" render={() => <Redirect to="/films" />}/>
-                        // {AdminRoute(Route)}
-                    )}
 
                     <div className={`${numCol} wide column`}>
                         {

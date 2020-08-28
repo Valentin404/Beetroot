@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import ReactImageFallback from "react-image-fallback"
 import {Link, Redirect, withRouter} from 'react-router-dom';
 import FormMessage from './FormMessage'
-import api from '../../api'
+
 
 const initialData = {
     title: "",
