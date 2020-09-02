@@ -9,12 +9,9 @@ const setValue = {
     email: v => v,
     textarea: v => v,
     password: v => v,
-    description: v => v,
-    title: v => v,
 };
 
 const setFormObj = (data, fn) => ({target}) => {
-    debugger
     const value = target.type === "checkbox" ? target.checked : target.value;
     return fn({...data, [target.name]: setValue[target.type](value)});
 };
