@@ -23,14 +23,15 @@ if(name == 'authorId') {
 }       
         setForm(prev => ({...prev, [name]: value}))
     }
-    const memoCourses = useMemo( 
-        () =>
-            courses.map(course => ({ 
-                ...course,
-                authorName: authors.find(author => author.id === course.authorId)?.name
-            })),
-        [courses, authors],
-    )
+        const memoCourses = useMemo( 
+            () =>
+                courses.map(course => ({ 
+                    ...course,
+                    authorName: authors.find(author => author.id === course.authorId)?.name
+                })),
+            [courses, authors],
+        )
+
     useEffect(() => {
         if (courses.length === 0) {
             loadCoursesAction().catch(err => {alert('Loading courses failed')})
@@ -45,7 +46,7 @@ if(name == 'authorId') {
 
     const handleSubmit = event => {
         event.preventDefault()
-        createCourseAction(form)
+        form.title == '' ? null : createCourseAction(form)
         setForm(initForm)
     }
 
@@ -85,10 +86,17 @@ if(name == 'authorId') {
   <option>frontend</option>
   <option>backend</option>
 </select>
-                    <div>slug:</div>
                 </div>
-
-                <button className="btn btn-primary" >Send</button>
+                <button className="btn btn-primary" onClick={ () => {
+                    if (form.title == '') {
+                        title.style.boxShadow = '0px 2px red'
+                        title.placeholder = 'title is empty'
+                    } else {
+                        title.style.boxShadow = null
+                        title.placeholder = ''
+                    }
+                }
+                }>Send</button>
             </form>
             {memoCourses.length ? (
                 <CoursesList courses={memoCourses}/>
