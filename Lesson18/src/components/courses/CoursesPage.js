@@ -10,13 +10,12 @@ const initForm = {
     title: '',
     category: 'frontend',
     authorId: +1,
-    slug: title => {return title.toLowerCase()}
+    slug: ''
 }
 
 const CoursesPage = ({courses, authors, counter, counterAction, createCourseAction, loadCoursesAction, loadAuthorsActions}) => {
     const [form, setForm] = useState(initForm)
    form.slug = form.title.toLowerCase()
-    
     const handleChange = event => {
         const {name, value} = event.target;
 if(name == 'authorId') {
@@ -74,9 +73,7 @@ if(name == 'authorId') {
                            type="number"
                            className="form-control"
                      >
-  <option>{+1}</option>
-    <option>{+2}</option>
-    <option>{+3}</option>
+    {authors.map(item => (<option value={item.id}>{item.name}</option>))}
 </select>
                     <div>category:</div>
                     <select onChange={handleChange}
