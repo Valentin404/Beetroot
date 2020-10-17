@@ -15,7 +15,7 @@ const initForm = {
 
 const CoursesPage = ({courses, authors, counter, counterAction, createCourseAction, loadCoursesAction, loadAuthorsActions}) => {
     const [form, setForm] = useState(initForm)
-   form.slug = form.title.toLowerCase()
+//    form.slug = form.title.toLowerCase()
     const handleChange = event => {
         const {name, value} = event.target;
 if(name == 'authorId') {
@@ -31,16 +31,16 @@ if(name == 'authorId') {
                 })),
             [courses, authors],
         )
-
+// debugger
     useEffect(() => {
         if (courses.length === 0) {
-            loadCoursesAction().catch(err => {alert('Loading courses failed'+ err)})
+            loadCoursesAction().catch(err => {alert('Loading courses failed')})
         }
     }, [courses.length, loadCoursesAction])
 
     useEffect(() => {
         if (authors.length === 0) {
-            loadAuthorsActions().catch(err => {alert('Loading courses failed'+ err)})
+            loadAuthorsActions().catch(err => {alert('Loading courses failed')})
         }
     }, [authors.length, loadAuthorsActions])
 
@@ -90,11 +90,11 @@ if(name == 'authorId') {
                  </div>
                 <button className="btn btn-primary" onClick={ () => {
                     if (form.title == '') {
-                        title.style.boxShadow = '0px 2px red';
-                        title.placeholder = 'title is empty';
+                        // title.style.boxShadow = '0px 2px red'
+                        // title.placeholder = 'title is empty'
                     } else {
-                        title.style.boxShadow = null;
-                        title.placeholder = '';
+                        // title.style.boxShadow = null
+                        // title.placeholder = ''
                     }
                 }
                 }>Send</button>
@@ -116,14 +116,18 @@ CoursesPage.propTypes = {
 CoursesPage.defaultProps = {
     courses: [],
 }
-
+// debugger
 function mapStateToProps({courses, authors, counter}) {
-    return {
-        authors,
-        counter,
-        courses: authors.length === 0 ? [] : courses,
+    // function mapStateToProps(state) {
+        // console.log(state)
+        return {
+            // state
+            authors,
+            counter,
+            courses: authors.length === 0 ? [] : courses,
+            // courses: authors.length === 0 ? [] : courses.map(item=> item.id==payload.id?payload:item),
+        }
     }
-}
 
 export default connect(mapStateToProps,
     {

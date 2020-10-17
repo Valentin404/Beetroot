@@ -34,8 +34,9 @@ CDproduct.prototype.constructor = CDproduct;
 CDproduct.prototype.getPlayLength = function() {return this.playLength}
 // console.dir(CDproduct(12, 3, 4))
 // console.log(CDproduct.getPlayLength)
-// let a = new CDproduct(12, 3 , 4)
-// console.log(a.getPlayLength())
+let a = new CDproduct(12, 3 , 4)
+console.log(a.getPlayLength())
+console.log(a.getTitle())
 
 function BookProduct(numPages) {
     this.numPages = numPages;

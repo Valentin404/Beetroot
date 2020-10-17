@@ -12,7 +12,6 @@ class FilmsPage extends Component {
         films: [],
         isLoading: true,
     }
-
     componentDidMount() {
         api.films
             .fetchAll()

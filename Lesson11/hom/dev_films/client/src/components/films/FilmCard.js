@@ -15,26 +15,26 @@ const FilmCard = ({film}) => {
             {/* {iseye
             ?  */}
              <Branch film={film} iseye={iseye}/>
-{/* //            : <>
-//   <span className="ui right corner label">
-//   <i className="empty star icon" />
-// </span>
-//         <div className="image">
-//             <span className="ui green label ribbon">$ {film?.price} </span>
-//             <Featured featured={film.featured} id={film._id} />
-//             <img src={film?.img} alt={film?.title} />
-//         </div>
-//         </> */}
+          {/* : <>
+  <span className="ui right corner label">
+  <i className="empty star icon" />
+</span>
+        <div className="image">
+            <span className="ui green label ribbon">$ {film?.price} </span>
+            <Featured featured={film.featured} id={film._id} />
+            <img src={film?.img} alt={film?.title} />
+        </div>
+        </> 
 
-    {/* <span className="ui right corner label">
+    <span className="ui right corner label">
       <i className="empty star icon" />
     </span>
             <div className="image">
                 <span className="ui green label ribbon">$ {film?.price} </span>
                 <Featured featured={film.featured} id={film._id} />
                 <img src={film?.img} alt={film?.title} />
-            </div> */}
-
+            </div> 
+*/}
             <div className="content">
       <span href="#" className="header">
         {film?.title}
@@ -49,7 +49,7 @@ const FilmCard = ({film}) => {
                 <div class="eye" onClick={clilcEYE}>
                     {iseye? <i className="icon eye"/> : <i className="icon eye slash"/> }
                 </div>
-            </div>
+            </div> 
         </div>
     )
 }
